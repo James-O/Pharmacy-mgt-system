@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pharmacy-Stocks-Management-System</title>
+    <!-- Font Awesome -->
+    <link href="~/Content/asset/fontawesome/css/all.min.css" rel="stylesheet" />
+    <link href="~/Content/asset/css/adminlte.min.css" rel="stylesheet" />
+    <link href="~/Content/asset/css/style.css" rel="stylesheet" />
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div>
+        @Html.Partial("_TopBar");
+        @Html.Partial("_SideBar");
+
+        @RenderBody();
+
+        @RenderSection("scripts", required: false);
+    </div>
+
+
+    <script src="~/Content/asset/jquery/jquery.min.js"></script>
+    <script src="~/Content/asset/js/adminlte.js"></script>
+    <script src="~/Content/asset/js/bootstrap.bundle.min.js"></script>
+
+    </body>
+    </html>

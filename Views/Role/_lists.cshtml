@@ -1,0 +1,131 @@
+﻿@model IEnumerable<PharmacyMgtSys.Models.Role>
+
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter" style="padding:3px;margin-left:15px;margin-bottom:5px">
+    Add new
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Add New Role</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="forminfo">
+                    <label>Role Name</label>
+                    <input type="text" id="name" class="form-control"/><br />
+                    <label>Role Description</label>
+                    <input id="description" type="text" class="form-control"/>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div>
+                    <a href="#" id="btnSave" class="btn btn-success editRec">Save Changes</a>
+                    <a href="#" id="btnCancel" class="btn btn-danger" data-dismiss="modal">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<table id="employeeTable" class="table table-bordered table-striped" style="width:100%;">
+    <thead>
+        <tr class="btn-success">
+            <th>RoleName</th>
+            <th>RoleDescription</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td hidden >@Html.DisplayFor(x => item.Id)</td>
+                <td>@Html.DisplayFor(x => item.RoleName)</td>
+                <td>@Html.DisplayFor(X => item.RoleDescription)</td>
+                <td>
+                    <button type="button" id="@item.Id" onclick="editRecord()" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Edit</button>|
+                    <button type="button" class="btn btn-danger" id="delete" onclick="deleteItem(@item.Id)">Delete</button>
+                    @*<button type="button" class="btn btn-success" id="@item.Id" onclick="Delete()">Delete</button>*@
+                </td>
+            </tr>
+        }
+
+
+
+    </tbody>
+</table>
+
+<script src="~/Content/asset/jquery/jquery.min.js"></script>
+<script src="~/Content/asset/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#btnSave").click(function () {
+            //var formData = $("#forminfo").serialize();
+            var nameValue = $("#name").val();
+            var desValue = $("#description").val();
+            //console.log(formData);
+            $.ajax({
+                type: "POST",
+                url: "/Role/Create",
+                @*url: '@Url.Action("Create","Role")',*@
+                data: {
+                    name: nameValue, description: desValue
+                },
+                success: function () {
+                    $("#exampleModalCenter").modal("hide");
+                    window.Location.href = "/Role/Index";
+                }
+            })
+        });
+        
+        //$("#delete").click(function () {
+
+        //    var result = confirm("Want to delete?");
+        //    if (result) {
+        //        var va = $(this).attr('id');
+        //        console.log(va);
+
+        //    }
+
+        //});
+
+    });
+
+
+    function deleteItem(id) {
+        var result = confirm("Are you sure you want to delete this record?");
+        if (result) {
+            $.ajax({
+                type: "GET",
+                url: "/Role/Delete",
+                data: {
+                    identity: id
+                }
+            })
+            
+        }
+        //var va = $(this).attr('id');
+        //console.log(id);
+        //alert('imhere')
+    }
+    function editRecord(id) {
+        $(".editRec").click(function () {
+            var nameValue = $("#name").val();
+            var nameRec = $("#description").val();
+        })
+        
+        }
+    
+</script>

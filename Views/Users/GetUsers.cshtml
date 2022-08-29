@@ -1,0 +1,164 @@
+﻿@model IEnumerable<PharmacyMgtSys.Models.User>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+    <div class="col-md-10 content-wrapper" style="margin-top:-3%">
+        @*<p style="margin-left:2%;" class="btn btn-default">@Html.ActionLink("Create New", "Create") 
+        </p>*@
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create" style="padding:3px;margin-left:15px;margin-bottom:5px">
+            Create new
+        </button>
+        <table class="table" style="margin-left:2%;">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.RoleId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Isdeleted)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastLoginDate)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoleId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Isdeleted)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastLoginDate)
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-default">@Html.ActionLink("Edit", "Edit", new { id = item.Id })</button>
+                        <button type="button" class="btn btn-default">@Html.ActionLink("Delete", "Delete", new { id = item.Id })</button>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="createTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createTitle">Add New Role</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="forminfo">
+                    <label>Role Id</label>
+                    <input type="number" id="roleid" class="form-control" /><br />
+                    <label>First Name</label>
+                    <input type="text" id="fname" class="form-control" />
+                    <label>Last Name</label>
+                    <input type="text" id="lname" class="form-control" /><br />
+                    <label>Email</label>
+                    <input type="email" id="email" class="form-control" />
+                    <label>Password</label>
+                    <input type="password" id="password" class="form-control" />
+                    <label>Address</label>
+                    <input type="text" id="address" class="form-control" /><br />
+                    <label>IsDeleted</label>
+                    <input type="checkbox" id="isdeleted" />
+                    <label>IsActive</label>
+                    <input type="checkbox" id="isactive"/>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div>
+                    <a href="#" id="btnSave" class="btn btn-success">Save Changes</a>
+                    <a href="#" id="btnCancel" data-dismiss="modal" class="btn btn-danger">Cancel</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/asset/jquery/jquery.min.js"></script>
+<script src="~/Content/asset/js/bootstrap.bundle.min.js"></script>
+@*<script src="~/Content/asset/jquery/jquery.min.js"></script>*@
+<script>
+    $(document).ready(function () {
+        $("#btnSave").click(function () {
+            var roleid = $("#roleid").val();
+            var fname = $("#fname").val();
+            var lname = $("#lname").val();
+            var email = $("#email").val();
+            var password = $("#password").val();
+            var address = $("#address").val();
+            var isdeleted = $("#isdeleted").val();
+            var isactive = $("#isactive").val();
+
+            $.ajax({
+                type: "POST",
+                url: "/Users/Create",
+                data: {
+                    Roleid: roleid,
+                    Fname: fname,
+                    Lname: lname,
+                    Email: email,
+                    Password: password,
+                    Address: address,
+                    Isdeleted: isdeleted,
+                    Isactive: isactive
+                },
+                success: function () {
+                    $("#create").modal("hide");
+                    window.Location.href = "/Users/GetUsers";
+                }
+            });
+
+        });
+
+    })
+</script>

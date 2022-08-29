@@ -1,0 +1,140 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+        <div class="content-wrapper" style="margin-top:-3%">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6 animated bounceInRight">
+                            <h1 class="m-0" style="color: rgb(242,175,88);"><span class="fa fa-capsules"></span> Dashboard</h1>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="~/Dashboard/Index">Home</a></li>
+                                <li class="breadcrumb-item active">Add Medicine</li>
+                            </ol>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class=" card-info">
+
+                        <!-- /.card-body -->
+                        <div class="row">
+                            <div class="col-xl-6 col-md-6 mb-4">
+                                <div class="card  h-100 py-2">
+                                    <h5 class="card-haeder ml-5">User Details</h5>
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="font-weight-bold mb-1">
+                                                    <ul>
+                                                        <li>FirstName: @Session["FirstName"]</li>
+                                                        <li>LastName: @Session["LastName"]</li>
+                                                        <li>Email: @Session["Email"]</li>
+                                                        <li>Address: @Session["Address"]</li>
+                                                        <li>RoleId: @Session["RoleId"]</li>
+                                                        <li>IsActive: @Session["IsActive"]</li>
+                                                        <li>Last login date: @Session["LastLoginDate"]</li>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-xl-6 col-md-6 mb-4">
+                                        <div class="card  h-100 py-2">
+                                            <h5 class="card-haeder ml-3">Number of users</h5>
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                            @*Number of active user: <h4>@Session["Isdeleted"]</h4>*@
+                                                            Number of active user: <h4>@Session["TotalNumberOfUsers"]</h4>
+                                                            @*Number of deleted user: <h4>@Session["deleted"]</h4>*@
+                                                            Number of inactive user: <h4>@Session["TotalNumberOfDeletedUser"]</h4>
+                                                        </div>
+                                                        <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-md-6 mb-4">
+                                        <div class="card  h-100 py-2">
+                                            <h5 class="card-haeder ml-3">Most Recent Sales</h5>
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                            Earnings (Monthly)
+                                                        </div>
+                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-6 col-md-6 mb-4">
+                                        <div class="card border-left-primary  h-100 py-2">
+                                            <h5 class="card-haeder ml-3">Least Item on Stock</h5>
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                            Earnings (Monthly)
+                                                        </div>
+                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-md-6 mb-4">
+                                        <div class="card border-left-primary  h-100 py-2">
+                                            <h5 class="card-haeder ml-3">Others</h5>
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                            Earnings (Monthly)
+                                                        </div>
+                                                        <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+       
+        

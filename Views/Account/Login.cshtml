@@ -1,0 +1,84 @@
+﻿
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pharmacy Management System</title>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link href="~/Content/asset/fontawesome/css/all.min.css" rel="stylesheet" />
+    <!-- Theme style -->
+    <link href="~/Content/asset/css/adminlte.min.css" rel="stylesheet" />
+
+</head>
+
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <!-- /.login-logo -->
+        <div class="card card-outline card-warning">
+            <div class="card-header text-center">
+                <a href="index.html" class="brand-link">
+                    <img src="~/Content/asset/img/stethoscope.jpg" alt="DSMS Logo" width="100">
+                </a>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Email" name="email">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="Password" name="password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="input-group mb-3">
+                        <select class="form-control">
+                            <option>Admin</option>
+                            <option>Encoder</option>
+                        </select>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-users"></span>
+                            </div>
+                        </div>
+                    </div>*@
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="icheck-primary">
+                                <input type="checkbox" id="remember">
+                                <label for="remember">
+                                    Remember Me
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6 offset-3">
+                            <input type="submit" class="btn btn-block btn-bg" style="background-color: rgba(242,175,88);" value="Sign in" /><a href="@Url.Action("Login","Account")"></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.login-box -->
+</body>
+
+</html>
+
